@@ -15,13 +15,13 @@ namespace Domain
         }
         public Days(int Weeksoff)
         {
-            totalweeks = 52 + (Weeksoff);
+            totalweeks = 52 - (Weeksoff);
 
         }
         public int Weekdays(int Tvungetlukkedage)
         {
             
-            return totalweeks * 5 + (Tvungetlukkedage + Helligdage());
+            return totalweeks * 5 - (Tvungetlukkedage + Helligdage());
             
         }
 
@@ -34,11 +34,40 @@ namespace Domain
             return 6;
         }
 
-        public bool Rest()
+        public bool Weekday()
         {
-            DateTime dateValue = new DateTime(2008, 6, 11);
+            bool returnvalue = true;
+            DateTime dateValue = new DateTime(DateTime.Now.Year+1, 2, 28);
             
-            return true;
+
+            if ((dateValue.DayOfWeek == DayOfWeek.Saturday) && (dateValue.DayOfWeek == DayOfWeek.Sunday))
+            {
+                returnvalue = false;
+            }
+
+            return returnvalue;
+        }
+        public int Isleepyear()
+        {
+            int isleepyear = 0;
+            DateTime datevalue = new DateTime(DateTime.Now.Year + 1, 2, 28);
+            if (DateTime.IsLeapYear(DateTime.Now.Year +1) == true)
+            {
+                if (datevalue.DayOfWeek == DayOfWeek.Friday || datevalue.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    isleepyear = 2;
+                }
+                else
+                {
+                    isleepyear = 1;
+                }
+            }
+            else
+            {
+                isleepyear = 0;
+            }
+
+            return isleepyear;
         }
 
     }

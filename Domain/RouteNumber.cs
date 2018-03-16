@@ -22,7 +22,7 @@ namespace Domain
             set
             {
                 Days days = new Days(Lukkedage);
-                _totalkøretimer = (days.Weekdays(Lukkedage)+HverdagsTimer) + (days.Weekenddays()+WeekendsTimer) + (days.Helligdage()+HellingdagsTimer);
+                _totalkøretimer = (days.Weekdays(Lukkedage) + HverdagsTimer) + (days.Weekenddays() + WeekendsTimer) + (days.Helligdage() + HellingdagsTimer) + Rest(); ;
             }
             
         }
@@ -35,6 +35,46 @@ namespace Domain
         {          
             this.RouteID = routeID;
             this.RequiredVehicleType = requiredVehicleType;
+        }
+        private int Rest()
+        {
+            Days days = new Days(Lukkedage);
+            int rest = 0;
+
+
+            
+
+            switch (days.Isleepyear())
+            {
+                case 0:
+                    if(days.Weekday() == false)
+                    {
+                        rest = 1 * WeekendsTimer;
+                    }
+                    else
+                    {
+                        rest = 1 * HverdagsTimer;
+                    }
+                    return rest;
+                case 1:
+                    if (days.Weekday() == false)
+                    {
+                        rest = 2 * WeekendsTimer;
+                    }
+                    else
+                    {
+                        rest = 2 * HverdagsTimer;
+                    }
+                    return rest;
+                case 2:
+                    rest = (1 * HverdagsTimer) + (1 * WeekendsTimer);
+                    return rest;
+                default:
+                    break;
+            }
+            
+        
+            return rest;
         }
         
     }
