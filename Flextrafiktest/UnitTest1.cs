@@ -29,20 +29,20 @@ namespace Flextrafiktest
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.AreEqual(2608, rn.Totalkøretimer);
+            Assert.AreEqual(2552, rn.Totalkøretimer);
         }
 
         [TestMethod]
         public void TestMethod2()
         {
 
-            Assert.AreEqual(1800, day.Weekdays(rn.Lukkedage) * rn.HverdagsTimer);
+            Assert.AreEqual(1760, day.Weekdays(rn.Lukkedage) * rn.HverdagsTimer);
         }
         [TestMethod]
         public void TestMethod3()
         {
 
-            Assert.AreEqual(704160, offer.OperationPrice);
+            Assert.AreEqual(689040, offer.OperationPrice);
         }
         [TestMethod]
         public void TestDifferentRoutes()
