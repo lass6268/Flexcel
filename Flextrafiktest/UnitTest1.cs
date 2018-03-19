@@ -54,10 +54,10 @@ namespace Flextrafiktest
             Assert.AreEqual(3033, route2558.Totalkøretimer);
         }
         [TestMethod]
-        public void Test4000RoutesDriveHours()
+        public void TestSpecificRoute4000DriveHours()
         {
             RouteNumber route4000 = new RouteNumber(4000, 6, 7.5, 6.5, 6.5, 0, 0);
-            Assert.AreEqual(3033, route4000.Totalkøretimer);
+            Assert.AreEqual(2627.5, route4000.Totalkøretimer);
         }
     }
 }
