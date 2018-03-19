@@ -47,54 +47,12 @@ namespace Flextrafiktest
         [TestMethod]
         public void TestDifferentRoutes()
         {
-            RouteNumber route2502 = new RouteNumber(2502, 2,8,8,8,5,4)
-            {
-                HverdagsTimer = 8,
-                WeekendsTimer = 8,
-                HellingdagsTimer = 8,
-                LukkeUger = 5,
-                Lukkedage = 4
-            };
-            RouteNumber route2503 = new RouteNumber(2503, 2,8,0,0,5,4)
-            {
-                HverdagsTimer = 8,
-                WeekendsTimer = 0,
-                HellingdagsTimer = 0,
-                LukkeUger = 5,
-                Lukkedage = 4
-            };
-            RouteNumber route2504 = new RouteNumber(2504, 2,8,0,8,5,4)
-            {
-                HverdagsTimer = 8,
-                WeekendsTimer = 0,
-                HellingdagsTimer = 8,
-                LukkeUger = 5,
-                Lukkedage = 4
-            };
-            RouteNumber route2505 = new RouteNumber(2505, 2,8,0,0,5,4)
-            {
-                HverdagsTimer = 8,
-                WeekendsTimer = 0,
-                HellingdagsTimer = 0,
-                LukkeUger = 5,
-                Lukkedage = 4
-            };
-            RouteNumber route2506 = new RouteNumber(2506, 2,8,0,0,4,4)
-            {
-                HverdagsTimer = 8,
-                WeekendsTimer = 0,
-                HellingdagsTimer = 0,
-                LukkeUger = 4,
-                Lukkedage = 4
-            };
-            RouteNumber route2558 = new RouteNumber(2558, 6,9,9,9,3,7)
-            {
-                HverdagsTimer = 9,
-                WeekendsTimer = 9,
-                HellingdagsTimer = 9,
-                LukkeUger = 3,
-                Lukkedage = 7
-            };
+            RouteNumber route2502 = new RouteNumber(2502, 2,8,8,8,5,4);
+            RouteNumber route2503 = new RouteNumber(2503, 2,8,0,0,5,4);
+            RouteNumber route2504 = new RouteNumber(2504, 2,8,0,8,5,4);
+            RouteNumber route2505 = new RouteNumber(2505, 2,8,0,0,5,4);
+            RouteNumber route2506 = new RouteNumber(2506, 2,8,0,0,4,4);
+            RouteNumber route2558 = new RouteNumber(2558, 6,9,9,9,3,7);
             Assert.AreEqual(2608, route2502.Totalkøretimer);
             Assert.AreEqual(1808, route2503.Totalkøretimer);
             Assert.AreEqual(1856, route2504.Totalkøretimer);
