@@ -87,11 +87,20 @@ namespace Flextrafiktest
                 LukkeUger = 4,
                 Lukkedage = 4
             };
+            RouteNumber route2558 = new RouteNumber(2558, 6)
+            {
+                HverdagsTimer = 9,
+                WeekendsTimer = 9,
+                HellingdagsTimer = 9,
+                LukkeUger = 3,
+                Lukkedage = 7
+            };
             Assert.AreEqual(2608, route2502.Totalkøretimer);
             Assert.AreEqual(1808, route2503.Totalkøretimer);
             Assert.AreEqual(1856, route2504.Totalkøretimer);
             Assert.AreEqual(1808, route2505.Totalkøretimer);
             Assert.AreEqual(1848, route2506.Totalkøretimer);
+            Assert.AreEqual(3033, route2558.Totalkøretimer);
         }
     }
 }
