@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Days
+    public class Days
     {
-        private int totalweeks = 0;
-        public Days()
-        {
-
-        }
+        private int totalweeks;
+        
         public Days(int Weeksoff)
         {
             totalweeks = 52 - (Weeksoff);

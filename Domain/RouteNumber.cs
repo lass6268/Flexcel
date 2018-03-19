@@ -6,7 +6,7 @@ namespace Domain
     {
         public List<Offer> offers;
 
-        int _totalkøretimer;
+       
         public int RouteID { get; set; }
         public int RequiredVehicleType { get; set; }
         public int HverdagsTimer { get; set; }
@@ -17,14 +17,11 @@ namespace Domain
         public int Totalkøretimer { 
             get
             {
-                return _totalkøretimer;
-            }
-            set
-            {
-                Days days = new Days(Lukkedage);
-                _totalkøretimer = (days.Weekdays(Lukkedage) + HverdagsTimer) + (days.Weekenddays() + WeekendsTimer) + (days.Helligdage() + HellingdagsTimer) + Rest(); ;
-            }
-            
+                Days days = new Days(LukkeUger);
+                return ((days.Weekdays(Lukkedage) * HverdagsTimer) + (days.Weekenddays() * WeekendsTimer) + (days.Helligdage() * HellingdagsTimer) + Rest());
+
+                
+            }    
         }
 
         public RouteNumber()
@@ -41,7 +38,7 @@ namespace Domain
             Days days = new Days(Lukkedage);
             int rest = 0;
 
-
+        
             
 
             switch (days.Isleepyear())
