@@ -25,40 +25,39 @@ namespace Flextrafiktest
             offer = new Offer("123", 270, 2502, "123", 123, 123, null, rn.Totalkøretimer);
 
         }
-
-        [TestMethod]
-        public void TestTotalDriveHours()
-        {
-            Assert.AreEqual(2608, rn.Totalkøretimer);
-        }
-
         [TestMethod]
         public void TestWeekdayHours()
         {
 
-            Assert.AreEqual(1800, day.Weekdays(rn.Lukkedage) * rn.HverdagsTimer);
+            Assert.AreEqual(1760, day.Weekdays(rn.Lukkedage) * rn.HverdagsTimer);
         }
         [TestMethod]
         public void TestOperationPrice()
         {
 
-            Assert.AreEqual(704160, offer.OperationPrice);
+            Assert.AreEqual(689040, offer.OperationPrice);
         }
         [TestMethod]
-        public void TestDifferentRoutes()
+        public void TestDifferentRoutesDriveHours()
         {
-            RouteNumber route2502 = new RouteNumber(2502, 2,8,8,8,5,4);
-            RouteNumber route2503 = new RouteNumber(2503, 2,8,0,0,5,4);
-            RouteNumber route2504 = new RouteNumber(2504, 2,8,0,8,5,4);
-            RouteNumber route2505 = new RouteNumber(2505, 2,8,0,0,5,4);
-            RouteNumber route2506 = new RouteNumber(2506, 2,8,0,0,4,4);
+            RouteNumber route2502 = new RouteNumber(2502, 2,8,8,8,5,11);
+            RouteNumber route2503 = new RouteNumber(2503, 2,8,0,0,5,11);
+            RouteNumber route2504 = new RouteNumber(2504, 2,8,0,8,5,11);
+            RouteNumber route2505 = new RouteNumber(2505, 2,8,0,0,5,11);
+            RouteNumber route2506 = new RouteNumber(2506, 2,8,0,0,4,11);
             RouteNumber route2558 = new RouteNumber(2558, 6,9,9,9,3,7);
-            Assert.AreEqual(2608, route2502.Totalkøretimer);
-            Assert.AreEqual(1808, route2503.Totalkøretimer);
-            Assert.AreEqual(1856, route2504.Totalkøretimer);
-            Assert.AreEqual(1808, route2505.Totalkøretimer);
-            Assert.AreEqual(1848, route2506.Totalkøretimer);
+            Assert.AreEqual(2552, route2502.Totalkøretimer);
+            Assert.AreEqual(1768, route2503.Totalkøretimer);
+            Assert.AreEqual(1816, route2504.Totalkøretimer);
+            Assert.AreEqual(1768, route2505.Totalkøretimer);
+            Assert.AreEqual(1808, route2506.Totalkøretimer);
             Assert.AreEqual(3033, route2558.Totalkøretimer);
+        }
+        [TestMethod]
+        public void Test4000RoutesDriveHours()
+        {
+            RouteNumber route4000 = new RouteNumber(4000, 6, 7.5, 6.5, 6.5, 0, 0);
+            Assert.AreEqual(3033, route4000.Totalkøretimer);
         }
     }
 }
