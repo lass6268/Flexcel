@@ -14,13 +14,13 @@ namespace Flextrafiktest
         public void Testinit()
         {
 
-            rn = new RouteNumber(2502, 2);
+            rn = new RouteNumber(2502, 2,8,8,8,5,11);
            
-            rn.HverdagsTimer = 8;
+            /*rn.HverdagsTimer = 8;
             rn.WeekendsTimer = 8;
             rn.HellingdagsTimer = 8;
             rn.LukkeUger = 5;
-            rn.Lukkedage = 4;
+            rn.Lukkedage = 4;*/
             day = new Days(rn.LukkeUger);
             offer = new Offer("123", 270, 2502, "123", 123, 123, null, rn.Totalkøretimer);
 

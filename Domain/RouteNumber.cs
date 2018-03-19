@@ -18,9 +18,7 @@ namespace Domain
             get
             {
                 Days days = new Days(LukkeUger);
-                return ((days.Weekdays(Lukkedage) * HverdagsTimer) + (days.Weekenddays() * WeekendsTimer) + (days.Helligdage() * HellingdagsTimer) + Rest());
-
-                
+                return ((days.Weekdays(Lukkedage) * HverdagsTimer) + (days.Weekenddays() * WeekendsTimer) + (days.Helligdage() * HellingdagsTimer) + Rest());      
             }    
         }
 
@@ -28,10 +26,32 @@ namespace Domain
         {
             offers = new List<Offer>(); 
         }
-        public RouteNumber(int routeID, int requiredVehicleType) : this()
+        public RouteNumber(int routeID, int requiredVehicleType, int hverdagstimer, int weekendstimer, int helligdagstimer, int lukkeruger, int lukkedage) : this()
         {          
             this.RouteID = routeID;
             this.RequiredVehicleType = requiredVehicleType;
+            this.HverdagsTimer = hverdagstimer;
+            this.WeekendsTimer = weekendstimer;
+            this.HellingdagsTimer = helligdagstimer;
+            this.LukkeUger = lukkeruger;
+            this.Lukkedage = Lukkededage(lukkedage);
+        }
+
+        private int Lukkededage(int dage)
+        {
+            int returdage;
+
+            if(dage>= 7)
+            {
+                returdage = dage-7;
+                LukkeUger++;
+            }
+            else
+            {
+                returdage = dage;
+            }
+            return returdage;
+
         }
         private int Rest()
         {

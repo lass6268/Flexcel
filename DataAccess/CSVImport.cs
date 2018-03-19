@@ -124,7 +124,6 @@ namespace DataAccess
                     WeekendsTimer = TryParseToIntElseZero(x[5]) - TryParseToIntElseZero(x[4]) - TryParseToIntElseZero(x[8]),
                     HellingdagsTimer = TryParseToIntElseZero(x[7]) - TryParseToIntElseZero(x[6]) - TryParseToIntElseZero(x[8]),
                     LukkeUger = x[9].Count(s => s == '+')+1,
-                   
                     Lukkedage = TryParseToIntElseZero(x[10]),
                 });
                 foreach (var r in data)
