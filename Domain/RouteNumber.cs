@@ -9,12 +9,12 @@ namespace Domain
        
         public int RouteID { get; set; }
         public int RequiredVehicleType { get; set; }
-        public int HverdagsTimer { get; set; }
-        public int WeekendsTimer { get; set; }
-        public int HellingdagsTimer { get; set; }
+        public double HverdagsTimer { get; set; }
+        public double WeekendsTimer { get; set; }
+        public double HellingdagsTimer { get; set; }
         public int LukkeUger { get; set; }
         public int Lukkedage { get; set; }
-        public int Totalkøretimer { 
+        public double Totalkøretimer { 
             get
             {
                 Days days = new Days(LukkeUger);
@@ -26,7 +26,7 @@ namespace Domain
         {
             offers = new List<Offer>(); 
         }
-        public RouteNumber(int routeID, int requiredVehicleType, int hverdagstimer, int weekendstimer, int helligdagstimer, int lukkeruger, int lukkedage) : this()
+        public RouteNumber(int routeID, int requiredVehicleType, double hverdagstimer, double weekendstimer, double helligdagstimer, int lukkeruger, int lukkedage) : this()
         {          
             this.RouteID = routeID;
             this.RequiredVehicleType = requiredVehicleType;
@@ -53,10 +53,10 @@ namespace Domain
             return returdage;
 
         }
-        private int Rest()
+        private double Rest()
         {
             Days days = new Days(Lukkedage);
-            int rest = 0;
+            double rest = 0;
 
         
             

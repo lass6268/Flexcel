@@ -16,10 +16,10 @@
         public Contractor Contractor {get;set;}
 
         public Offer() { }
-        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int totalContractHours, int requiredVehicleType = 0)
+        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, double totalContractHours, int requiredVehicleType = 0)
         {
             this.OfferReferenceNumber = referenceNumber;
-            this.OperationPrice = operationPrice * totalContractHours;
+            this.OperationPrice = operationPrice * (float)totalContractHours;
             this.RouteID = routeID;        
             this.UserID = userID;       
             this.RouteNumberPriority = routeNumberPriority;

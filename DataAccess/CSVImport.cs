@@ -72,7 +72,7 @@ namespace DataAccess
                         try
                         {
                             o.RequiredVehicleType = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).RequiredVehicleType;
-                            int totalcontracthours = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).Totalkøretimer;
+                            double totalcontracthours = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).Totalkøretimer;
                             Offer newOffer = new Offer(o.OfferReferenceNumber, o.OperationPrice, o.RouteID, o.UserID, o.RouteNumberPriority, o.ContractorPriority, contractor, totalcontracthours,o.RequiredVehicleType);
                             listOfOffers.Add(newOffer);
                         }
