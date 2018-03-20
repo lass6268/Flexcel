@@ -120,11 +120,11 @@ namespace DataAccess
                 {
                     RouteID = TryParseToIntElseZero(x[0]),
                     RequiredVehicleType = TryParseToIntElseZero(x[1]),
-                    HverdagsTimer = TryParseToIntElseZero(x[3]) - TryParseToIntElseZero(x[2]) - TryParseToIntElseZero(x[8]),
-                    WeekendsTimer = TryParseToIntElseZero(x[5]) - TryParseToIntElseZero(x[4]) - TryParseToIntElseZero(x[8]),
-                    HellingdagsTimer = TryParseToIntElseZero(x[7]) - TryParseToIntElseZero(x[6]) - TryParseToIntElseZero(x[8]),
-                    LukkeUger = x[9].Count(s => s == '+')+1,
-                    Lukkedage = TryParseToIntElseZero(x[10]),
+                    HverdagsTimer = CalculateOperatingHours(x[2]) - TryParseToFloatElseZero(x[5]),
+                    WeekendsTimer = CalculateOperatingHours(x[3]) - TryParseToFloatElseZero(x[5]),
+                    HellingdagsTimer = CalculateOperatingHours(x[4]) - TryParseToFloatElseZero(x[5]),
+                    LukkeUger = x[6].Count(s => s == '+')+1,
+                    Lukkedage = TryParseToIntElseZero(x[7]),
                 });
                 foreach (var r in data)
                 {
@@ -212,6 +212,19 @@ namespace DataAccess
         public List<RouteNumber> SendRouteNumberListToContainer()
         {
             return listOfRouteNumbers;
+        }
+        private float CalculateOperatingHours(string hverdageFeldtIExcel)
+        {
+            string[] hours = hverdageFeldtIExcel.Split('+');
+
+            float valueToReturn = 0;
+            foreach (string operatingHours  in hours)
+            {
+                string[] workHours = operatingHours.Split('-');
+
+                valueToReturn += TryParseToFloatElseZero(workHours[1]) - TryParseToFloatElseZero(workHours[0]);
+            }
+            return valueToReturn;
         }
     }
 }
