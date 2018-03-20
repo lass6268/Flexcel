@@ -1,19 +1,21 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain;
+using DataAccess;
 
 namespace Flextrafiktest
 {
     [TestClass]
     public class UnitTest1
     {
+        CSVImport CSVImp;
         RouteNumber rn;
         Days day;
         Offer offer;
         [TestInitialize]
         public void Testinit()
         {
-
+            CSVImp = new CSVImport();
             rn = new RouteNumber(2502, 2,8,8,8,5,11);
            
             /*rn.HverdagsTimer = 8;
@@ -58,6 +60,18 @@ namespace Flextrafiktest
         {
             RouteNumber route4000 = new RouteNumber(4000, 6, 7.5, 6.5, 6.5, 0, 0);
             Assert.AreEqual(2627.5, route4000.Totalkøretimer);
+        }
+        [TestMethod]
+        public void TestRoute18()
+        {
+            RouteNumber route18 = new RouteNumber(18, 2, 8.5, 8.5, 8.5, 5, 0);
+            Assert.AreEqual(2805, route18.Totalkøretimer);
+        }
+        [TestMethod]
+        public void TestMultipleArgumentsFromExcelArk()
+        {
+            string hverdageFeldtIExcel = "700-1100+1300-1800";
+            Assert.AreEqual(900, CSVImp.CalculateOperatingHours(hverdageFeldtIExcel));
         }
     }
 }

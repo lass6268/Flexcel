@@ -39,7 +39,7 @@ namespace DataAccess
                 cultureInformation.NumberFormat.NumberDecimalSeparator = ",";
                 Thread.CurrentThread.CurrentCulture = cultureInformation;
             }
-            float number;
+            float number = 0;
             toParse = toParse.Replace(" ", "");
             bool tryParse = float.TryParse(toParse.Replace('.', ','), out number);
             return number;
@@ -213,7 +213,7 @@ namespace DataAccess
         {
             return listOfRouteNumbers;
         }
-        private float CalculateOperatingHours(string hverdageFeldtIExcel)
+        public float CalculateOperatingHours(string hverdageFeldtIExcel)
         {
             string[] hours = hverdageFeldtIExcel.Split('+');
 
