@@ -70,8 +70,8 @@ namespace Flextrafiktest
         [TestMethod]
         public void TestMultipleArgumentsFromExcelArk()
         {
-            string hverdageFeldtIExcel = "700-1100+1300-1800";
-            Assert.AreEqual(900, CSVImp.CalculateOperatingHours(hverdageFeldtIExcel));
+            string hverdageFeldtIExcel = "730-1100+1300-1800";
+            Assert.AreEqual(8.5, CSVImp.CalculateOperatingHours(hverdageFeldtIExcel));
         }
     }
 }
