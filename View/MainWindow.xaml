@@ -76,7 +76,7 @@
                 Click="BtnStartSelection_Click">
         </Button>
         <ListView x:Name="listView"
-                  Margin="10,69,10.2,61.4"
+                  Margin="10,97,10.333,61.667"
                   SelectedItem="{Binding outputList}"
                   SelectedValuePath="RouteID">
 
@@ -137,5 +137,19 @@
                Margin="0,0,125.2,35.4"
                VerticalAlignment="Bottom"
                Width="93" />
+        <TextBox x:Name="txtBoxFilePathRouteNumberOffer_Copy"
+            Height="20"
+            Margin="133,65,178.333,0"
+            TextWrapping="Wrap"
+            Text=""
+            VerticalAlignment="Top" />
+        <Button x:Name="btnRouteNumberOfferXlFilePathSelect_Copy"
+            Content="Vælg fil"
+            HorizontalAlignment="Right"
+            Margin="0,65,114.333,0"
+            VerticalAlignment="Top"
+            Style="{StaticResource ButtonTemplateShort}"
+            Click="BtnRouteNumberFilePathSelect_Click_1"
+            Width="59"/>
     </Grid>
 </Window>

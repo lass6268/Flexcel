@@ -108,11 +108,12 @@ namespace DataAccess
                 throw new Exception("Fejl, filerne blev ikke importeret");
             }
         }
-        public void ImportRouteNumbers()
+        public void ImportRouteNumbers(string filepath1)
         {
             try
             {
-                string filepath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
+                string filepath = filepath1;
+                //string filepath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
                 var data = File.ReadAllLines(filepath, encoding)
                 .Skip(1)
                 .Select(x => x.Split(';'))
