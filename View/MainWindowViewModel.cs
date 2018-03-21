@@ -21,9 +21,9 @@ namespace View
             ImportDone = false;
         }
 
-        public void ImportCSV(string masterDataFilepath, string routeNumberFilepath)
+        public void ImportCSV(string masterDataFilepath, string routeNumberFilepath, string FNfile)
         {
-            iOController.InitializeImport(masterDataFilepath, routeNumberFilepath);
+            iOController.InitializeImport(masterDataFilepath, routeNumberFilepath, FNfile);
         }
         public string ChooseCSVFile()
         {

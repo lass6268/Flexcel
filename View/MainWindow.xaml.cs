@@ -27,6 +27,11 @@ namespace View
         {
             txtBoxFilePathRouteNumberOffer.Text = mainWindowViewModel.ChooseCSVFile();
         }
+        private void BtnRouteNumberFilePathSelect_Click_1(object sender, RoutedEventArgs e)
+        {
+            txtBoxFilePathRouteNumberOffer_Copy.Text = mainWindowViewModel.ChooseCSVFile();
+        }
+
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -41,7 +46,7 @@ namespace View
                 }
                 else
                 {
-                    mainWindowViewModel.ImportCSV(txtBoxFilePathMasterData.Text.ToString(), txtBoxFilePathRouteNumberOffer.Text.ToString());
+                    mainWindowViewModel.ImportCSV(txtBoxFilePathMasterData.Text.ToString(), txtBoxFilePathRouteNumberOffer.Text.ToString(), txtBoxFilePathRouteNumberOffer_Copy.Text.ToString());
                     MessageBox.Show("Filerne er nu importeret");
                     mainWindowViewModel.ImportDone = true;
                 }
@@ -102,5 +107,7 @@ namespace View
                 MessageBox.Show(x.Message);
             }
         }
+
+       
     }
 }
