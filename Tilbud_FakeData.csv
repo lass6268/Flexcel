@@ -1,0 +1,19 @@
+Nummer;Garantivognsnummer;Pris;navn;Virksomhedsnavn;BrugerID;Rutenummer prioritet;Entreprenør prioritet
+1-18;18;250;Jakob2;Jakobs Virksomhed;Jakob2@supermail.com;;
+2-18;18;260;Jakob;Jakobs Virksomhed;Jakob@supermail.com;;
+1-2502;2502;250;Jakob;Jakobs Virksomhed;Jakob@supermail.com;;
+2-2502;2502;260;Jonatan;Jonatans Virksomhed;Jonatan@Megamail.com;;
+1-2503;2503;250;Jonatan;Jonatans Virksomhed;Jonatan@Megamail.com;;
+2-2503;2503;260;Jakob3;Jakobs Virksomhed;Jakob3@supermail.com;;
+1-2504;2504;250;Jakob3;Jakobs Virksomhed;Jakob3@supermail.com;;
+2-2504;2504;260;Jakob2;Jakobs Virksomhed;Jakob2@supermail.com;;
+1-2505;2505;250;Jakob2;Jakobs Virksomhed;Jakob2@supermail.com;;
+2-2505;2505;260;Jakob;Jakobs Virksomhed;Jakob@supermail.com;;
+1-2506;2506;250;Jakob;Jakobs Virksomhed;Jakob@supermail.com;;
+2-2506;2506;260;Jonatan;Jonatans Virksomhed;Jonatan@Megamail.com;;
+1-2554;2554;250;Jakob;Jakobs Virksomhed;Jakob@supermail.com;;
+2-2554;2554;260;Jonatan;Jonatans Virksomhed;Jonatan@Megamail.com;;
+1-2558;2558;250;Jonatan;Jonatans Virksomhed;Jonatan@Megamail.com;;
+2-2558;2558;260;Jakob3;Jakobs Virksomhed;Jakob3@supermail.com;;
+1-4000;4000;250;Jakob3;Jakobs Virksomhed;Jakob3@supermail.com;;
+2-4000;4000;260;Jakob2;Jakobs Virksomhed;Jakob2@supermail.com;;
