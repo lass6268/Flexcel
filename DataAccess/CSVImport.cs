@@ -72,7 +72,7 @@ namespace DataAccess
                         try
                         {
                             o.RequiredVehicleType = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).RequiredVehicleType;
-                            double totalcontracthours = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).Totalkøretimer;
+                            double totalcontracthours = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).TotalYearlyDrivingHours;
                             Offer newOffer = new Offer(o.OfferReferenceNumber, o.OperationPrice, o.RouteID, o.UserID, o.RouteNumberPriority, o.ContractorPriority, contractor, totalcontracthours,o.RequiredVehicleType);
                             listOfOffers.Add(newOffer);
                         }
@@ -120,11 +120,11 @@ namespace DataAccess
                 {
                     RouteID = TryParseToIntElseZero(x[0]),
                     RequiredVehicleType = TryParseToIntElseZero(x[1]),
-                    HverdagsTimer = CalculateOperatingHours(x[2]) - TryParseToFloatElseZero(x[5]),
-                    WeekendsTimer = CalculateOperatingHours(x[3]) - TryParseToFloatElseZero(x[5]),
-                    HellingdagsTimer = CalculateOperatingHours(x[4]) - TryParseToFloatElseZero(x[5]),
-                    LukkeUger = x[6].Count(s => s == '+')+1,
-                    Lukkedage = TryParseToIntElseZero(x[7]),
+                    WeekdayHours = CalculateOperatingHours(x[2]) - TryParseToFloatElseZero(x[5]),
+                    WeekendHours = CalculateOperatingHours(x[3]) - TryParseToFloatElseZero(x[5]),
+                    HolidayHours = CalculateOperatingHours(x[4]) - TryParseToFloatElseZero(x[5]),
+                    ClosedWeeks = x[6].Count(s => s == '+')+1,
+                    ClosedDays = TryParseToIntElseZero(x[7]),
                 });
                 foreach (var r in data)
                 {

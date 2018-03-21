@@ -5,20 +5,18 @@ namespace Domain
     public class RouteNumber
     {
         public List<Offer> offers;
-
-       
         public int RouteID { get; set; }
         public int RequiredVehicleType { get; set; }
-        public double HverdagsTimer { get; set; }
-        public double WeekendsTimer { get; set; }
-        public double HellingdagsTimer { get; set; }
-        public int LukkeUger { get; set; }
-        public int Lukkedage { get; set; }
-        public double Totalkøretimer { 
+        public double WeekdayHours { get; set; }
+        public double WeekendHours { get; set; }
+        public double HolidayHours { get; set; }
+        public int ClosedWeeks { get; set; }
+        public int ClosedDays { get; set; }
+        public double TotalYearlyDrivingHours { 
             get
             {
-                Days days = new Days(LukkeUger);
-                return ((days.Weekdays(Lukkedage) * HverdagsTimer) + (days.Weekenddays() * WeekendsTimer) + (days.Helligdage() * HellingdagsTimer) + Rest());      
+                DaysInYearCalculator days = new DaysInYearCalculator(ClosedWeeks);
+                return ((days.Weekdays(ClosedDays) * WeekdayHours) + (days.Weekenddays() * WeekendHours) + (days.HolidayDays * HolidayHours) + LastPartOfYear());      
             }    
         }
 
@@ -26,73 +24,64 @@ namespace Domain
         {
             offers = new List<Offer>(); 
         }
-        public RouteNumber(int routeID, int requiredVehicleType, double hverdagstimer, double weekendstimer, double helligdagstimer, int lukkeruger, int lukkedage) : this()
+        public RouteNumber(int routeID, int requiredVehicleType, double weekdayHours, double weekendsHours, double holidayHours, int closedWeeks, int closedDays)
+            : this()
         {          
             this.RouteID = routeID;
             this.RequiredVehicleType = requiredVehicleType;
-            this.HverdagsTimer = hverdagstimer;
-            this.WeekendsTimer = weekendstimer;
-            this.HellingdagsTimer = helligdagstimer;
-            this.LukkeUger = lukkeruger;
-            this.Lukkedage = Lukkededage(lukkedage);
+            this.WeekdayHours = weekdayHours;
+            this.WeekendHours = weekendsHours;
+            this.HolidayHours = holidayHours;
+            this.ClosedWeeks = closedWeeks;
+            this.ClosedDays = CalculateClosedDays(closedDays);
         }
-
-        private int Lukkededage(int dage)
+        private int CalculateClosedDays(int days)
         {
-            int returdage;
-
-            if(dage>= 7)
+            int realClosedDays;
+            if(days>= 7)
             {
-                returdage = dage-7;
-                LukkeUger++;
+                realClosedDays = days-7;
+                ClosedWeeks++;
             }
             else
             {
-                returdage = dage;
+                realClosedDays = days;
             }
-            return returdage;
-
+            return realClosedDays;
         }
-        private double Rest()
+        private double LastPartOfYear()
         {
-            Days days = new Days(Lukkedage);
-            double rest = 0;
-
-        
-            
-
+            DaysInYearCalculator days = new DaysInYearCalculator(ClosedWeeks);
+            double lastPart = 0;
             switch (days.Isleepyear())
             {
                 case 0:
                     if(days.Weekday() == false)
                     {
-                        rest = 1 * WeekendsTimer;
+                        lastPart = 1 * WeekendHours;
                     }
                     else
                     {
-                        rest = 1 * HverdagsTimer;
+                        lastPart = 1 * WeekdayHours;
                     }
-                    return rest;
+                    return lastPart;
                 case 1:
                     if (days.Weekday() == false)
                     {
-                        rest = 2 * WeekendsTimer;
+                        lastPart = 2 * WeekendHours;
                     }
                     else
                     {
-                        rest = 2 * HverdagsTimer;
+                        lastPart = 2 * WeekdayHours;
                     }
-                    return rest;
+                    return lastPart;
                 case 2:
-                    rest = (1 * HverdagsTimer) + (1 * WeekendsTimer);
-                    return rest;
+                    lastPart = (1 * WeekdayHours) + (1 * WeekendHours);
+                    return lastPart;
                 default:
                     break;
             }
-            
-        
-            return rest;
+            return lastPart;
         }
-        
     }
 }

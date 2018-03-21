@@ -7,6 +7,7 @@ namespace UnitTest
     [TestClass]
     public class SelctionTest
     {
+        /*
         TestDataContainer testData = new TestDataContainer();
         SelectionController selectionController = new SelectionController();
 
@@ -21,6 +22,6 @@ namespace UnitTest
         {
             testData.FillListContainer_HappyPath();
             selectionController.SelectWinners();
-        }
+        }*/
     }
 }
