@@ -121,9 +121,9 @@ namespace DataAccess
                 {
                     RouteID = TryParseToIntElseZero(x[0]),
                     RequiredVehicleType = TryParseToIntElseZero(x[1]),
-                    WeekdayHours = CalculateOperatingHours(x[2]) - ParseStringToFloat("00" + x[5]),
-                    WeekendHours = CalculateOperatingHours(x[3]) - ParseStringToFloat("00" + x[5]),
-                    HolidayHours = CalculateOperatingHours(x[4]) - ParseStringToFloat("00" + x[5]),
+                    WeekdayHours = CalculateOperatingHours(x[2]) - ParseStringToFloat(x[5]),
+                    WeekendHours = CalculateOperatingHours(x[3]) - ParseStringToFloat(x[5]),
+                    HolidayHours = CalculateOperatingHours(x[4]) - ParseStringToFloat(x[5]),
                     ClosedWeeks = x[6].Count(s => s == '+')+1,
                     ClosedDays = TryParseToIntElseZero(x[7]),
                 });
@@ -230,13 +230,14 @@ namespace DataAccess
         }
         private float ParseStringToFloat(string stringToParse)
         {
-            string firstpart = stringToParse.Substring(0, stringToParse.Count() - 2);
-            string secondpart = stringToParse.Substring(stringToParse.Count() - 2);
-            if (secondpart == "30")
+            float firstpart = 0;
+            if (stringToParse.Count() > 2)
             {
-                secondpart = "50";
+                firstpart = float.Parse(stringToParse.Substring(0, stringToParse.Count() - 2));
             }
-            return float.Parse(firstpart + "," + secondpart);
+            float secondpart = float.Parse(stringToParse.Substring(stringToParse.Count() - 2));
+            secondpart = secondpart / 60;
+            return firstpart + secondpart;
         }
     }
 }
